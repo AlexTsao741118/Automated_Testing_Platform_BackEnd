@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView
+from users.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 登录接口的访问路径
-    path('bryant-admin/users/login', TokenObtainPairView.as_view(), name='login'),
+    # path('bryant-admin/users/login', TokenObtainPairView.as_view(), name='login'),
+    path('bryant-admin/users/login', LoginView.as_view(), name='login')
 ]
