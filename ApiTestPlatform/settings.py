@@ -48,7 +48,9 @@ INSTALLED_APPS = [
     'Cronjob',
     'BugManage',
     # 注册安装的djangorestframework-simplejwt应用
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    # 注册Django的过滤插件
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -143,8 +145,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # 配置JWT登录鉴权方式
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
-    )
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
 # 配置token的有效期
