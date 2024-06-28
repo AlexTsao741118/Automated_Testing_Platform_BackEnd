@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'BugManage',
     # 注册安装的djangorestframework-simplejwt应用
     'rest_framework_simplejwt',
-    # 注册Django的过滤插件
+    # 註冊安裝的過濾器插件
     'django_filters',
 ]
 
@@ -146,9 +146,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+    # 配置DRF使用的過濾器(通過django_filters插件來進行過濾)
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
     ),
 }
 

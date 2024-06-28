@@ -16,3 +16,4 @@ class TestEnvView(ModelViewSet):
     queryset = TestEnv.objects.all()
     serializer_class = TestEnvSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_fields = ['project']
